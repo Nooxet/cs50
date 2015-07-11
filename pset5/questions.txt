@@ -1,0 +1,46 @@
+0.  A lung disease
+
+1.  It returns resource usage statistics of the process
+
+2.  16 members
+
+3.  To avoid copying the structs to the function, now we just copy an integer
+
+4.  It read one character at a time, checking if the characters is valid, i.e.
+    alphabetical and apostrophes, with a maximum size. If the word is to long or 
+    contains invalid characters, the word is simply skipped. The for loop breaks
+    when the EOF byte is read.
+
+5.  If we were to use fscanf, we couldn't check invalid characters on-the-fly and we 
+    would have to check the string for those characters -> inefficient.
+    Also, and more important, we don't know how large the input word is so we could 
+    basically overflow a buffer is the input would be too large.
+
+6.  They are declared as constant so that we don't un-intentionally change the 
+    strings. If we do, the compiler is gonna yell at us.
+
+7.  I implemented the spell checker using a hash table. I have a struct called hm_t with
+    a size and an array of node_t pointers, where node_t is the nodes in a linked list.
+    
+    typedef struct node_t
+    {
+        char word[LENGTH + 1];
+        struct node_t *next;
+    } node_t;
+    
+    typedef struct hm_t
+    {
+        unsigned int size;
+        node_t *array[HASHSIZE];
+    } hm_t;
+
+    where HASHSIZE is set to 10000. This value would in an ideal world
+    give 14.3 elements per index. (dictionary is 143000 words).
+
+8.  Running the program with the austinpowers text yielded a total time of 0.06,
+    compared to the staff's implementation of 0.17.
+
+9.  I tried different values of HASHSIZE to see the difference in performance, but
+    10000 seems to be a good number.
+
+10. Not that I know of.

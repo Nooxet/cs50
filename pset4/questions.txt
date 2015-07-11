@@ -1,0 +1,54 @@
+0.  
+    BMP: 24-bit, 32-bit with alpha channel.
+    GIF: 8-bit
+    JPEG: 24-bit
+    PNG: 48-bit
+
+1.  Only GIF supports animation.
+
+2.  Lossless compression means that all the information will be
+    recovered during decompression.
+    Lossy is the opposite - One can not recover all the information
+    after decompression.
+
+3.  JPEG is lossy-compressed.
+
+4.  It basically just removes the pointer to the the data (first cluster of it)
+    but the actual data is still there.
+
+5.  Actually overwrite the all the blocks with e.g. NULL bytes.
+
+6.  The header file in which uint8_t uint16_t etc. are defined.
+
+7.  To make sure the variables are of a specific size e.g. uint8_t is exactly 8 bits wide and is only positive.
+
+8.  
+    BYTE: 1 byte    (unsigned)
+    DWORD: 4 bytes  (unsigned)
+    LONG: 4 bytes   (signed)
+    WORD: 2 bytes   (unsigned)
+
+9.  0x42 0x4D (BM)
+
+10. 
+    bfSize: size of bitmap file in bytes.
+    biSize: the number of byte required by the BITMAPINFOHEADER struct.
+
+11. if biHeight is < 0, it means that the bmp is a top-down DIB and the origin
+    is the upper-left corner.
+
+12. biBitCount
+
+13. We might me out of memory, thus we can not create a new file.
+
+14. Since we always read one structure at a time. We specify the size of the structure to be read,
+    then reads one number of said structure.
+
+15. 3
+
+16. fseek sets the file position indicator to a new position by adding
+    an offset to a position specified by the parameter "whence".
+
+17. SEEK_CUR specifies the current position indicator when calling fseek.
+
+18. Rob Bowden
